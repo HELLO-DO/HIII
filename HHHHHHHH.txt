@@ -1,0 +1,345 @@
+1
+
+
+package login;
+
+import javax.swing.*;
+import java.awt.event.*;
+
+public class LoginScreen {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Login");
+        JLabel userLabel = new JLabel("Username:");
+        JLabel passLabel = new JLabel("Password:");
+        JTextField userText = new JTextField();
+        JPasswordField passText = new JPasswordField();
+        JButton loginBtn = new JButton("Login");
+
+        userLabel.setBounds(30, 30, 80, 25);
+        passLabel.setBounds(30, 70, 80, 25);
+        userText.setBounds(120, 30, 150, 25);
+        passText.setBounds(120, 70, 150, 25);
+        loginBtn.setBounds(120, 110, 150, 25);
+
+        frame.add(userLabel);
+        frame.add(passLabel);
+        frame.add(userText);
+        frame.add(passText);
+        frame.add(loginBtn);
+        frame.setSize(350, 220);
+        frame.setLayout(null);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        String validUsername = "admin";
+        String validPassword = "123";
+
+        loginBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String enteredUsername = userText.getText();
+                String enteredPassword = new String(passText.getPassword());
+
+                if (enteredUsername.equals(validUsername) && enteredPassword.equals(validPassword)) {
+                    JOptionPane.showMessageDialog(frame, "Login Successful!");
+                } else {
+                    JOptionPane.showMessageDialog(frame, "Invalid Username or Password");
+                }
+            }
+        });
+    }
+}
+
+
+
+
+2
+
+
+
+package app;
+
+import javax.swing.*;
+import java.awt.event.*;
+
+public class HospitalApp {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Hospital Management");
+
+        JLabel nameLabel = new JLabel("Patient Name:");
+        JTextField nameField = new JTextField();
+        JLabel diseaseLabel = new JLabel("Disease Name:");
+        JTextField diseaseField = new JTextField();
+        JButton addBtn = new JButton("Add Patient");
+
+        nameLabel.setBounds(30, 30, 100, 25);
+        nameField.setBounds(150, 30, 150, 25);
+        diseaseLabel.setBounds(30, 70, 100, 25);
+        diseaseField.setBounds(150, 70, 150, 25);
+        addBtn.setBounds(150, 110, 150, 25);
+
+        frame.add(nameLabel);
+        frame.add(nameField);
+        frame.add(diseaseLabel);
+        frame.add(diseaseField);
+        frame.add(addBtn);
+
+        frame.setSize(400, 300);
+        frame.setLayout(null);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        addBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String patientName = nameField.getText();
+                String diseaseName = diseaseField.getText();
+
+                if (!patientName.isEmpty() && !diseaseName.isEmpty()) {
+                    JOptionPane.showMessageDialog(frame, "Patient '" + patientName + "' with disease '" + diseaseName + "' added successfully!");
+                } else {
+                    JOptionPane.showMessageDialog(frame, "Please enter both patient name and disease name.");
+                }
+            }
+        });
+    }
+}
+
+
+
+
+
+
+
+3
+
+
+
+
+
+package pack;
+
+import javax.swing.*;
+
+public class Calculator {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Simple Calculator");
+
+        JTextField t1 = new JTextField();
+        JTextField t2 = new JTextField();
+        JTextField result = new JTextField();
+        JButton addBtn = new JButton("Add");
+        JButton subBtn = new JButton("Subtract");
+        JButton mulBtn = new JButton("Multiply");
+        JButton divBtn = new JButton("Divide");
+        JButton perBtn = new JButton("Percentage");
+
+        t1.setBounds(50, 30, 150, 25);
+        t2.setBounds(50, 70, 150, 25);
+        result.setBounds(50, 110, 150, 25);
+        addBtn.setBounds(50, 150, 150, 25);
+        subBtn.setBounds(50, 190, 150, 25);
+        mulBtn.setBounds(50, 230, 150, 25);
+        divBtn.setBounds(50, 270, 150, 25);
+        perBtn.setBounds(50, 310, 150, 25);
+
+        frame.add(t1);
+        frame.add(t2);
+        frame.add(result);
+        frame.add(addBtn);
+        frame.add(subBtn);
+        frame.add(mulBtn);
+        frame.add(divBtn);
+        frame.add(perBtn);
+
+        frame.setSize(280, 420);
+        frame.setLayout(null);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        addBtn.addActionListener(e -> {
+            try {
+                int a = Integer.parseInt(t1.getText());
+                int b = Integer.parseInt(t2.getText());
+                result.setText(String.valueOf(a + b));
+            } catch (NumberFormatException ex) {
+                result.setText("Invalid Input");
+            }
+        });
+
+        subBtn.addActionListener(e -> {
+            try {
+                int a = Integer.parseInt(t1.getText());
+                int b = Integer.parseInt(t2.getText());
+                result.setText(String.valueOf(a - b));
+            } catch (NumberFormatException ex) {
+                result.setText("Invalid Input");
+            }
+        });
+
+        mulBtn.addActionListener(e -> {
+            try {
+                int a = Integer.parseInt(t1.getText());
+                int b = Integer.parseInt(t2.getText());
+                result.setText(String.valueOf(a * b));
+            } catch (NumberFormatException ex) {
+                result.setText("Invalid Input");
+            }
+        });
+
+        divBtn.addActionListener(e -> {
+            try {
+                int a = Integer.parseInt(t1.getText());
+                int b = Integer.parseInt(t2.getText());
+                result.setText(String.valueOf((double) a / b));
+            } catch (NumberFormatException ex) {
+                result.setText("Invalid Input");
+            }
+        });
+
+        perBtn.addActionListener(e -> {
+            try {
+                int a = Integer.parseInt(t1.getText());
+                int b = Integer.parseInt(t2.getText());
+                result.setText(String.valueOf((a * 100.0) / b) + "%");
+            } catch (NumberFormatException ex) {
+                result.setText("Invalid Input");
+            }
+        });
+    }
+}
+
+
+
+
+4
+
+package vote;
+
+import javax.swing.*;
+import java.awt.event.*;
+
+public class VotingApp {
+    static int alice = 0, bob = 0, charlie = 0;
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Voting App");
+        JLabel label = new JLabel("Click to Vote!");
+        JButton btnAlice = new JButton("Vote Alice");
+        JButton btnBob = new JButton("Vote Bob");
+        JButton btnCharlie = new JButton("Vote Charlie");
+        JButton btnResult = new JButton("Show Result");
+
+        label.setBounds(50, 20, 200, 30);
+        btnAlice.setBounds(100, 60, 150, 30);
+        btnBob.setBounds(100, 100, 150, 30);
+        btnCharlie.setBounds(100, 140, 150, 30);
+        btnResult.setBounds(100, 180, 150, 30);
+
+        JTextArea resultArea = new JTextArea();
+        resultArea.setBounds(50, 230, 250, 100);
+        resultArea.setEditable(false);
+
+        btnAlice.addActionListener(e -> alice++);
+        btnBob.addActionListener(e -> bob++);
+        btnCharlie.addActionListener(e -> charlie++);
+
+        btnResult.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String result = "Results:\n";
+                result += "Alice: " + alice + " votes\n";
+                result += "Bob: " + bob + " votes\n";
+                result += "Charlie: " + charlie + " votes\n\n";
+
+                if (alice > bob && alice > charlie)
+                    result += "Winner: Alice 🎉";
+                else if (bob > charlie)
+                    result += "Winner: Bob 🎉";
+                else
+                    result += "Winner: Charlie 🎉";
+
+                resultArea.setText(result);
+            }
+        });
+
+        frame.add(label);
+        frame.add(btnAlice);
+        frame.add(btnBob);
+        frame.add(btnCharlie);
+        frame.add(btnResult);
+        frame.add(resultArea);
+
+        frame.setSize(350, 400);
+        frame.setLayout(null);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+}
+
+
+
+
+
+5
+
+
+package yy;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class SimpleChatApp {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Simple Chat");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 300);
+        frame.setLayout(new FlowLayout());
+
+        JTextArea chatArea = new JTextArea(10, 30);
+        chatArea.setEditable(false);
+        frame.add(new JScrollPane(chatArea));
+
+        JTextField messageField = new JTextField(25);
+        frame.add(messageField);
+
+        JButton sendButton = new JButton("Send");
+        frame.add(sendButton);
+
+        sendButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String userMessage = messageField.getText();
+                if (!userMessage.trim().isEmpty()) {
+                    chatArea.append("You: " + userMessage + "\n");
+                    String botResponse = getPredefinedResponse(userMessage);
+                    chatArea.append("Bot: " + botResponse + "\n");
+                    messageField.setText("");
+                }
+            }
+        });
+
+        frame.setVisible(true);
+    }
+
+    private static String getPredefinedResponse(String message) {
+        if (message.equalsIgnoreCase("Hi")) {
+            return "Hello!";
+        } else if (message.equalsIgnoreCase("How are you?")) {
+            return "I'm doing great!";
+        } else if (message.equalsIgnoreCase("Bye")) {
+            return "Goodbye!";
+        } else {
+            return "I don't understand.";
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
